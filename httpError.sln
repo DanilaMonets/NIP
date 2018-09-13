@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpError", "httpError\httpError.csproj", "{54E447CF-5215-45B1-BB2D-285D41861E80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54E447CF-5215-45B1-BB2D-285D41861E80}.Debug|x86.ActiveCfg = Debug|x86
+		{54E447CF-5215-45B1-BB2D-285D41861E80}.Debug|x86.Build.0 = Debug|x86
+		{54E447CF-5215-45B1-BB2D-285D41861E80}.Release|x86.ActiveCfg = Release|x86
+		{54E447CF-5215-45B1-BB2D-285D41861E80}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal
