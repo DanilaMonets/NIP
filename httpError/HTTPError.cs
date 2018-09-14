@@ -1,0 +1,123 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+
+namespace httpError
+{
+    public class HTTPError : IComparable
+    {
+        int code;
+        string description;
+        DateTime date;
+        public HTTPError()
+        {
+            this.code = 0;
+            this.description = "ERROR";
+            this.date = new DateTime();
+
+        }
+
+        public int Code
+        {
+            get
+            {
+                return code;
+            }
+            set
+            {
+                code = value;
+            }
+        }
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+            }
+        }
+        public DateTime Date
+        {
+            get
+            {
+                return date;
+            }
+            set
+            {
+                date = value;
+            }
+        }
+        public override bool Equals(object obj)
+        {
+
+            return code == (obj as HTTPError).Code && description.CompareTo((obj as HTTPError).description) == 0 ? true : false;
+        }
+        public int CompareTo(object obj)
+        {
+            if (!(obj is HTTPError)) // perevirka ce is
+            {
+                throw new Exception("обєкт не є HTTPEror!");
+            }
+            int result = 0;
+            if (this.Equals(obj))
+            {
+                result = 0;
+            }
+            else
+            {
+                if (code > (obj as HTTPError).code)
+                {
+                    result = -1;
+                }
+                else
+                {
+                    if (code < (obj as HTTPError).code)
+                    {
+                        result = 1;
+                    }
+                    else
+                    {
+                        if (!date.Equals((obj as HTTPError).date))
+                        {
+                            throw new Exception("exception with different throws!");
+                        }
+
+
+
+                        throw new Exception("Неоднозначний код помилки"); // два дескрипшини не спывпали
+                    }
+
+                }
+
+            }
+            return result;
+        }
+        public override string ToString()
+        {
+            return "CODE: " + code + " DESCRIPTION: " + description + " DATE: " + date + "\n";
+        }
+        public void Read(string s)
+        {
+            // string s = sr.ReadLine();
+            string[] arr = s.Split('|');
+            int.TryParse(arr[0], out code);
+            description = arr[1];
+            string[] arrDate = arr[2].Split('.');
+
+            date = new DateTime(int.Parse(arrDate[0]), int.Parse(arrDate[1]), int.Parse(arrDate[2]));
+
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+    }
+}

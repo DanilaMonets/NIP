@@ -6,7 +6,10 @@ namespace httpError
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            HTTPError kek = new HTTPError();
+            
+            Console.WriteLine(kek);
+            Console.ReadKey();
         }
     }
 }
