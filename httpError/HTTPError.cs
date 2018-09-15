@@ -10,15 +10,33 @@ namespace httpError
 {
     public class HTTPError : IComparable
     {
-        int code;
-        string description;
-        DateTime date;
+        private int code;
+        private string description;
+        private DateTime date;
+        private static SortedList<int, string> listOfErrors;
+
+        static HTTPError()
+        {
+            listOfErrors = new SortedList<int, string>();
+            listOfErrors.Add(400, "Bad Request");
+            listOfErrors.Add(401, "Unauthorized");
+            listOfErrors.Add(403, "Forbidden");
+        }
         public HTTPError()
         {
             this.code = 0;
             this.description = "ERROR";
             this.date = new DateTime();
 
+        }
+        public HTTPError(int code, DateTime date)
+        {
+            this.code = code;
+            if (listOfErrors.TryGetValue(this.code, out this.description) == false)
+            {
+                this.description = "This error haven`t description yet.";
+            }
+            this.date = date;
         }
 
         public int Code
@@ -54,6 +72,17 @@ namespace httpError
                 date = value;
             }
         }
+
+
+        public static string getDescriptionOf(int key){
+            string str;
+            if (listOfErrors.TryGetValue(key, out str) == false)
+            {
+                str = "This error haven`t description yet.";
+            }
+            return str;
+        }
+
         public override bool Equals(object obj)
         {
 
