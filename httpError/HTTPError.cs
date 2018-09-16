@@ -45,7 +45,7 @@ namespace httpError
             {
                 return code;
             }
-            set
+          private  set
             {
                 code = value;
             }
@@ -56,7 +56,7 @@ namespace httpError
             {
                 return description;
             }
-            set
+         private   set
             {
                 description = value;
             }
@@ -67,7 +67,7 @@ namespace httpError
             {
                 return date;
             }
-            set
+         private   set
             {
                 date = value;
             }
@@ -130,7 +130,7 @@ namespace httpError
         }
         public override string ToString()
         {
-            return "CODE: " + code + " DESCRIPTION: " + description + " DATE: " + date + "\n";
+            return string.Format($"CODE: {this.code} DESCRIPTION: {this.description} DATE: {this.date}\n");
         }
         public void Read(string s)
         {
@@ -145,7 +145,7 @@ namespace httpError
         }
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return this.ToString().GetHashCode();
         }
 
     }
