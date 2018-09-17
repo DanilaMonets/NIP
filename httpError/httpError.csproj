@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="HTTPError.cs" />
     <Compile Include="HTTPErrorsCollection.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyTextPair.cs" />

@@ -14,6 +14,12 @@ namespace httpError
             HTTPErrorsCollection fromFile = new HTTPErrorsCollection();
             MyTextPair text = fromFile.ReadTextFromFile("File2.txt");
             Console.WriteLine($"Text from file:\n{text.OldText}\nChanged text:\n{text.NewText}");
+
+            Console.WriteLine("cls");
+            Logger.AddLog(400, DateTime.Now);
+            Logger.AddLog(400, DateTime.Now);
+            Logger.AddLog(401, DateTime.Now);
+            Logger.AddLog(401, DateTime.Now);
             Console.WriteLine();
         }
     }
