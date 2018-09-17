@@ -7,7 +7,7 @@ namespace httpError
         public static void Main(string[] args)
         {
             HTTPError kek = new HTTPError();
-            
+
             Console.WriteLine(kek);
             Console.ReadKey();
         }

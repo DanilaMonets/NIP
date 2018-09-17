@@ -46,7 +46,7 @@ namespace httpError
             {
                 return code;
             }
-          private  set
+            private set
             {
                 code = value;
             }
@@ -57,7 +57,7 @@ namespace httpError
             {
                 return description;
             }
-         private   set
+            private set
             {
                 description = value;
             }
@@ -68,7 +68,7 @@ namespace httpError
             {
                 return date;
             }
-         private   set
+            private set
             {
                 date = value;
             }

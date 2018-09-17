@@ -52,5 +52,29 @@ namespace httpError
         {
             return this.httpErrors.Contains(error);
         }
+
+        public void RemoveAt(int index)
+        {
+            if (index < 0 || index >= this.httpErrors.Count)
+            {
+                throw new ArgumentOutOfRangeException("index", $"Index must be in range [0 ; {this.httpErrors.Count - 1}].");
+            }
+            this.httpErrors.Remove(this.httpErrors[index]);
+        }
+
+        public void Clear()
+        {
+            this.httpErrors.Clear();
+        }
+
+        public override string ToString()
+        {
+            string[] str = new string[this.httpErrors.Count];
+            for (int i = 0; i < this.httpErrors.Count; i++)
+            {
+                str[i] = this.httpErrors[i].ToString();
+            }
+            return string.Join("\n", str);
+        }
     }
 }
