@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -92,7 +93,7 @@ namespace httpError
         {
             if (!(obj is HTTPError)) // perevirka ce is
             {
-                throw new Exception("обєкт не є HTTPEror!");
+                throw new Exception("об`єкт не є HTTPEror!");
             }
             int result = 0;
             if (this.Equals(obj))
