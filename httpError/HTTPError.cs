@@ -22,6 +22,8 @@ namespace httpError
             listOfErrors.Add(400, "Bad Request");
             listOfErrors.Add(401, "Unauthorized");
             listOfErrors.Add(403, "Forbidden");
+            listOfErrors.Add(402, "Payment Required");
+            listOfErrors.Add(404, "Not Found");
         }
         public HTTPError()
         {

@@ -20,7 +20,11 @@ namespace httpError
             Logger.AddLog(400, DateTime.Now);
             Logger.AddLog(401, DateTime.Now);
             Logger.AddLog(401, DateTime.Now);
+            Logger.AddLog(403, DateTime.Now);
             Console.WriteLine();
+            
+            
+            HttpRequestEmulator.makeRequest();
         }
     }
 }
