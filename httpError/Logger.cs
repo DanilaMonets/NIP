@@ -7,16 +7,28 @@ using System.IO;
 
 namespace httpError
 {
+    /// <summary>
+    /// Represents static class Logger
+    /// </summary>
     public static class Logger
-    {
+    {  
+        /// <summary>
+        /// Static list of error's code and list of dates
+        /// </summary>
         private static SortedList<int, List<DateTime>> log;
         private const string PATH = "log.txt";
 
+        /// <summary>
+        /// Static basic constructor
+        /// </summary>
         static Logger()
         {
             log = new SortedList<int, List<DateTime>>();
         }
 
+        /// <summary>
+        /// Gets variable log
+        /// </summary>
         public static SortedList<int, List<DateTime>> Log
         {
             get
@@ -25,6 +37,11 @@ namespace httpError
             }
         }
 
+        /// <summary>
+        /// Adds pair of key and time to log
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="time"></param>
         public static void AddLog(int key, DateTime time)
         {
             if (log.Keys.Contains(key))
@@ -40,6 +57,10 @@ namespace httpError
             MakeALog(PATH);
         }
 
+        /// <summary>
+        /// Loads log in file
+        /// </summary>
+        /// <param name="filename"></param>
         private static void MakeALog(string filename)
         {
             string[] strArr = new string[log.Keys.Count];

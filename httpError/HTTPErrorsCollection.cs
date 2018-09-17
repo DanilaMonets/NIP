@@ -9,15 +9,27 @@ using System.Threading.Tasks;
 
 namespace httpError
 {
+    /// <summary>
+    /// Represents classs for HTTPError collection
+    /// </summary>
     class HTTPErrorsCollection
     {
+        /// <summary>
+        /// List of HTTP errors
+        /// </summary>
         private List<HTTPError> httpErrors;
          
+        /// <summary>
+        /// Basic constructor
+        /// </summary>
         public HTTPErrorsCollection()
         {
             httpErrors = new List<HTTPError>();
         }
 
+        /// <summary>
+        /// Gets variable httpErrors
+        /// </summary>
         public List<HTTPError> HttpErrors
         {
             get
@@ -26,6 +38,11 @@ namespace httpError
             }
         }
 
+        /// <summary>
+        /// Gets the <see cref="T:httpError.HTTPErrorsCollection"/> at the specified index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public HTTPError this[int index]
         {
             get
@@ -34,6 +51,10 @@ namespace httpError
             }
         }
 
+        /// <summary>
+        /// Adds new HTTP error to the list 
+        /// </summary>
+        /// <param name="error"></param>
         public void Add(HTTPError error)
         {
             if(!this.httpErrors.Contains(error))
@@ -42,6 +63,11 @@ namespace httpError
             }
         }
 
+        /// <summary>
+        /// Removes  specified HTTP error from the list
+        /// </summary>
+        /// <param name="error"></param>
+        /// <returns></returns>
         public bool Remove(HTTPError error)
         { 
             if(this.httpErrors.Contains(error))
@@ -50,12 +76,20 @@ namespace httpError
             }
             return false;
         }
-
+        /// <summary>
+        /// Checks if list contains specified HTTP error
+        /// </summary>
+        /// <param name="error"></param>
+        /// <returns></returns>
         public bool Contains(HTTPError error)
         {
             return this.httpErrors.Contains(error);
         }
 
+        /// <summary>
+        /// Removes specified HTTP error chosen by index
+        /// </summary>
+        /// <param name="index"></param>
         public void RemoveAt(int index)
         {
             if (index < 0 || index >= this.httpErrors.Count)
@@ -64,12 +98,17 @@ namespace httpError
             }
             this.httpErrors.Remove(this.httpErrors[index]);
         }
-
+        /// <summary>
+        /// Clears list of HTTP errors
+        /// </summary>
         public void Clear()
         {
             this.httpErrors.Clear();
         }
-
+        /// <summary>
+        /// Represents instance in string format
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string[] str = new string[this.httpErrors.Count];
@@ -80,6 +119,10 @@ namespace httpError
             return string.Join("\n", str);
         }
 
+        /// <summary>
+        /// Reads list of HTTP errors from file
+        /// </summary>
+        /// <param name="path"></param>
         public void ReadLogOfErrorsFromFile(string path)
         {
             using (var streamReader = new StreamReader(path))
@@ -97,7 +140,11 @@ namespace httpError
                 }
             }
         }
-
+        /// <summary>
+        /// Reads text from file
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public MyTextPair ReadTextFromFile(string path)
         {
             using (var streamReader = new StreamReader(path))
