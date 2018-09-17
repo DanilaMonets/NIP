@@ -131,7 +131,7 @@ namespace httpError
         }
         public override string ToString()
         {
-            return string.Format($"CODE: {this.code} DESCRIPTION: {this.description} DATE: {this.date}\n");
+            return string.Format($"CODE: {this.code} DESCRIPTION: {this.description} DATE: {this.date}");
         }
         public void Read(string s)
         {

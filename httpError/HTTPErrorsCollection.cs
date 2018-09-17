@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -75,6 +78,44 @@ namespace httpError
                 str[i] = this.httpErrors[i].ToString();
             }
             return string.Join("\n", str);
+        }
+
+        public void ReadLogOfErrorsFromFile(string path)
+        {
+            using (var streamReader = new StreamReader(path))
+            {
+                char[] separators = {' ', '#' };
+                while (!streamReader.EndOfStream)
+                {
+                    var str = streamReader.ReadLine();
+                    var strs = str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                    var date = strs[1];
+                    var time = strs[2];
+                    var code = strs[0];
+                    this.httpErrors.Add(new HTTPError(int.Parse(code), DateTime.Parse($"{date} {time}")));
+
+                }
+            }
+        }
+
+        public MyTextPair ReadTextFromFile(string path)
+        {
+            using (var streamReader = new StreamReader(path))
+            {
+                var str = streamReader.ReadToEnd();
+                char[] separators = {' ', '-', '.', '(', ')', ',', ':', '\n', '\t', '?', '!', ';'};
+                this.httpErrors = (from t in str.Split(separators, StringSplitOptions.RemoveEmptyEntries)
+                    where t.StartsWith("#")
+                    select new HTTPError(int.Parse(t.Substring(1)), DateTime.Now)).ToList<HTTPError>();
+                var newStr = new StringBuilder(str);
+                foreach (var httpError in httpErrors)
+                {
+                    newStr.Replace(httpError.Code.ToString(),
+                        $"['{HTTPError.getDescriptionOf(httpError.Code)}', {httpError.Date.ToString(CultureInfo.CurrentCulture)}]");
+                }
+                return new MyTextPair(str,newStr.ToString());     
+            }
+           
         }
     }
 }

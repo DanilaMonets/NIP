@@ -6,10 +6,15 @@ namespace httpError
     {
         public static void Main(string[] args)
         {
-            HTTPError kek = new HTTPError();
+            HTTPErrorsCollection logErrors = new HTTPErrorsCollection();
+            logErrors.ReadLogOfErrorsFromFile("File1.txt");
+            Console.WriteLine(logErrors);
+            Console.WriteLine();
 
-            Console.WriteLine(kek);
-            Console.ReadKey();
+            HTTPErrorsCollection fromFile = new HTTPErrorsCollection();
+            MyTextPair text = fromFile.ReadTextFromFile("File2.txt");
+            Console.WriteLine($"Text from file:\n{text.OldText}\nChanged text:\n{text.NewText}");
+            Console.WriteLine();
         }
     }
 }
