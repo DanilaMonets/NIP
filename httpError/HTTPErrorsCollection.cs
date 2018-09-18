@@ -37,11 +37,14 @@ namespace HttpError
         /// <summary>
         /// Gets variable httpErrors
         /// </summary>
-        public List<HTTPError> HttpErrors
+        public IList<HTTPError> HttpErrors
         {
             get
             {
-                return this.httpErrors;
+                List<HTTPError> errors = (from e in this.httpErrors
+                                         orderby e.Date descending
+                                          select e).ToList<HTTPError>();
+                return errors;
             }
         }
 

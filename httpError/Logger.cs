@@ -50,6 +50,19 @@ namespace HttpError
         }
 
         /// <summary>
+        /// Gets the log.
+        /// </summary>
+        /// <value>The log.</value>
+        public static SortedList<int, List<DateTime>> GetLog
+        {
+            get
+            {
+                var l = new SortedList<int, List<DateTime>>(log.ToDictionary(q => q.Key, r => r.Value));
+                return l;
+            }
+        }
+
+        /// <summary>
         /// Adds pair of key and time to log
         /// </summary>
         /// <param name="key">Error to add</param>

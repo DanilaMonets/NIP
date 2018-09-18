@@ -32,7 +32,6 @@ namespace HttpError
             MyTextPair text = fromFile.ReadTextFromFile("File2.txt");
             Console.WriteLine($"Text from file:\n{text.OldText}\nChanged text:\n{text.NewText}");
 
-            Console.WriteLine("cls");
             Logger.AddLog(400, DateTime.Now);
             Logger.AddLog(400, DateTime.Now);
             Logger.AddLog(401, DateTime.Now);
@@ -41,6 +40,16 @@ namespace HttpError
             Console.WriteLine();
 
             HttpRequestEmulator.MakeRequest();
+
+            var q = Logger.GetLog;
+            foreach (var elem in q)
+            {
+                Console.WriteLine($"{elem.Key}\n");
+                elem.Value.ForEach(delegate(DateTime date)
+                {
+                    Console.WriteLine($"\t{date}");
+                });
+            }
         }
     }
 }
