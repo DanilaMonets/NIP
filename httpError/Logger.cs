@@ -1,25 +1,37 @@
-﻿using System;
+﻿//  <copyright file="Logger.cs" company="NIP">
+//  Copyright © 2018. All rights reserved.
+//  </copyright>
+//  <author>Danylo Monets</author>
+//  <author>Volodymyr Lysyshyn</author>
+//  <date>09/17/2018 06:40:03 PM </date>
+//  <summary>Class representing a http errors logger</summary>
+
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
-namespace httpError
+namespace HttpError
 {
     /// <summary>
     /// Represents static class Logger
     /// </summary>
     public static class Logger
-    {  
+    {
+        /// <summary>
+        /// The const path to log file.
+        /// </summary>
+        private const string PATH = "log.txt";
+
         /// <summary>
         /// Static list of error's code and list of dates
         /// </summary>
         private static SortedList<int, List<DateTime>> log;
-        private const string PATH = "log.txt";
 
         /// <summary>
-        /// Static basic constructor
+        /// Initializes static members of the <see cref="Logger"/> class
         /// </summary>
         static Logger()
         {
@@ -40,8 +52,8 @@ namespace httpError
         /// <summary>
         /// Adds pair of key and time to log
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="time"></param>
+        /// <param name="key">Error to add</param>
+        /// <param name="time">The time when the error occurred</param>
         public static void AddLog(int key, DateTime time)
         {
             if (log.Keys.Contains(key))
@@ -54,13 +66,14 @@ namespace httpError
                 List<DateTime> buffer = new List<DateTime>() { time };
                 log.Add(key, buffer);
             }
+
             MakeALog(PATH);
         }
 
         /// <summary>
         /// Loads log in file
         /// </summary>
-        /// <param name="filename"></param>
+        /// <param name="filename">Path to file</param>
         private static void MakeALog(string filename)
         {
             string[] strArr = new string[log.Keys.Count];
@@ -72,12 +85,13 @@ namespace httpError
                 str[i].Add($"#{log.Keys[i]}");
                 for (int j = 0; j < log.Values[i].Count; ++j)
                 {
-
                     str[i].Add($"\t{log.Values[i][j].ToString()}");
                 }
+
                 str[i].Add("\n");
                 strArr[i] = string.Join("\n", str[i].ToArray());
             }
+
             string result = string.Join("\n", strArr);
 
             File.WriteAllText(filename, result);

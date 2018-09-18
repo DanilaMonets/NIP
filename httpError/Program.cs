@@ -1,9 +1,26 @@
-﻿using System;
+﻿//  <copyright file="Program.cs" company="NIP">
+//  Copyright © 2018. All rights reserved.
+//  </copyright>
+//  <author>Volodymyr Lysyshyn</author>
+//  <date>09/13/2018 07:27:48 PM </date>
+//  <summary>Class representing a main method</summary>
 
-namespace httpError
+using System;
+
+[module: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1649:FileHeaderFileNameDocumentationMustMatchTypeName", Justification = "Reviewed.")]
+[module: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1633:FileMustHaveHeader", Justification = "Reviewed.")]
+
+namespace HttpError
 {
-    class MainClass
+    /// <summary>
+    /// Main class.
+    /// </summary>
+    public class MainClass
     {
+        /// <summary>
+        /// The entry point of the program, where the program control starts and ends.
+        /// </summary>
+        /// <param name="args">The command-line arguments.</param>
         public static void Main(string[] args)
         {
             HTTPErrorsCollection logErrors = new HTTPErrorsCollection();
@@ -22,9 +39,8 @@ namespace httpError
             Logger.AddLog(401, DateTime.Now);
             Logger.AddLog(403, DateTime.Now);
             Console.WriteLine();
-            
-            
-            HttpRequestEmulator.makeRequest();
+
+            HttpRequestEmulator.MakeRequest();
         }
     }
 }

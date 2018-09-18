@@ -1,4 +1,10 @@
-﻿
+﻿//  <copyright file="HTTPError.cs" company="NIP">
+//  Copyright © 2018. All rights reserved.
+//  </copyright>
+//  <author>Vasyl Salabay</author>
+//  <date>09/15/2018 05:09:42 PM </date>
+//  <summary>Class representing a http error</summary>
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-
-namespace httpError
+namespace HttpError
 {
     /// <summary>
     /// Represents class for HTTP error
@@ -32,7 +37,7 @@ namespace httpError
             listOfErrors.Add(404, "Not Found");
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:httpError.HTTPError"/> class
+        /// Initializes a new instance of the <see cref="T:HttpError.HTTPError"/> class
         /// </summary>
         public HTTPError()
         {
@@ -42,7 +47,7 @@ namespace httpError
 
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:httpError.HTTPError"/> class with specified code and date
+        /// Initializes a new instance of the <see cref="T:HttpError.HTTPError"/> class with specified code and date
         /// </summary>
         /// <param name="code"></param>
         /// <param name="date"></param>
@@ -106,7 +111,7 @@ namespace httpError
         /// </summary>
         /// <param name="key">Key (Error's code)</param>
         /// <returns>String of description of error</returns>
-        public static string getDescriptionOf(int key){
+        public static string GetDescriptionOf(int key){
             string str;
             if (listOfErrors.TryGetValue(key, out str) == false)
             {
@@ -115,14 +120,13 @@ namespace httpError
             return str;
         }
         /// <summary>
-        /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="T:httpError.HTTPError"/>.
+        /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="T:HttpError.HTTPError"/>.
         /// </summary>
-        /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:httpError.HTTPError"/>.</param>
+        /// <param name="obj">The <see cref="object"/> to compare with the current <see cref="T:HttpError.HTTPError"/>.</param>
         /// <returns><c>true</c> if the specified <see cref="object"/> is equal to the current
-        /// <see cref="T:httpError.HTTPError"/>; otherwise, <c>false</c>.</returns>
+        /// <see cref="T:HttpError.HTTPError"/>; otherwise, <c>false</c>.</returns>
         public override bool Equals(object obj)
         {
-
             return code == (obj as HTTPError).Code && description.CompareTo((obj as HTTPError).description) == 0 ? true : false;
         }
         /// <summary>
@@ -191,7 +195,7 @@ namespace httpError
 
         }
         /// <summary>
-        /// Serves as a hash function for a <see cref="T:httpError.HTTPError"/> object 
+        /// Serves as a hash function for a <see cref="T:HttpError.HTTPError"/> object 
         /// </summary>
         /// <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a hash table</returns>
         public override int GetHashCode()
