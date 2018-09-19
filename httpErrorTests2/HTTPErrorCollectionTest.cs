@@ -13,17 +13,18 @@ namespace HttpError.Tests
     public class HTTPErrorCollectionTests
     {
         [TestMethod()]
-        public void ReadTextFromFile()
+        public void ReadTextFromFileTest()
         {
             HTTPErrorsCollection httpErrorsCollection = new HTTPErrorsCollection();
             try
             {
-                httpErrorsCollection.ReadTextFromFile("File1.txt");
+                httpErrorsCollection.ReadTextFromFile("File54.txt");
             }
             catch (FileNotFoundException e)
             {
-                Assert.Fail(e.Message);
+                Assert.AreEqual(e.Message, "There is no such file.");
             }
+            Assert.Fail("No exception was thrown.");
         }
     }
 }
