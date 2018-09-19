@@ -4,7 +4,7 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpError", "httpError\httpError.csproj", "{54E447CF-5215-45B1-BB2D-285D41861E80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpErrorTests2", "httpErrorTests2\httpErrorTests2.csproj", "{18EC92CD-794D-4F63-BDAE-58C13ACCF89E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpErrorTests", "httpErrorTests2\httpErrorTests.csproj", "{18EC92CD-794D-4F63-BDAE-58C13ACCF89E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
