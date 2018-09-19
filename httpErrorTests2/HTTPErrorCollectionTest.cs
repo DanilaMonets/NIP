@@ -83,6 +83,9 @@ namespace HttpError.Tests
            var three = new HTTPError(404,DateTime.Now);
             
            var collection = new HTTPErrorsCollection();
+            collection.Add(one);
+            collection.Add(two);
+            collection.Add(three);
            collection.Clear();
            Assert.IsTrue(collection.HttpErrors.Count==0);
         }
