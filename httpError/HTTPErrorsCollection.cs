@@ -139,8 +139,15 @@ namespace HttpError
         /// Reads list of HTTP errors from file
         /// </summary>
         /// <param name="path">Path to file with list of errors</param>
+        /// <exception cref="System.IO.IOException">Throw when an incorrect file path is specified</exception>
         public void ReadLogOfErrorsFromFile(string path)
         {
+            FileInfo fi = new FileInfo(path);
+            if (fi.Exists == false)
+            {
+                throw new FileNotFoundException("There is no such file.");
+            }
+
             using (var streamReader = new StreamReader(path))
             {
                 char[] separators = { ' ', '#' };
@@ -161,8 +168,15 @@ namespace HttpError
         /// </summary>
         /// <param name="path">Path to file with text which contains code of errors</param>
         /// <returns>Pair of text from file and changed text</returns>
+        /// <exception cref="System.IO.IOException">Throw when an incorrect file path is specified</exception>
         public MyTextPair ReadTextFromFile(string path)
         {
+            FileInfo fi = new FileInfo(path);
+            if (fi.Exists == false)
+            {
+                throw new FileNotFoundException("There is no such file.");
+            }
+
             using (var streamReader = new StreamReader(path))
             {
                 var str = streamReader.ReadToEnd();

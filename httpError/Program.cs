@@ -6,6 +6,7 @@
 //  <summary>Class representing a main method</summary>
 
 using System;
+using System.IO;
 
 [module: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1649:FileHeaderFileNameDocumentationMustMatchTypeName", Justification = "Reviewed.")]
 [module: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1633:FileMustHaveHeader", Justification = "Reviewed.")]
@@ -24,13 +25,28 @@ namespace HttpError
         public static void Main(string[] args)
         {
             HTTPErrorsCollection logErrors = new HTTPErrorsCollection();
-            logErrors.ReadLogOfErrorsFromFile("File1.txt");
-            Console.WriteLine(logErrors);
+            try
+            {
+                logErrors.ReadLogOfErrorsFromFile("File1.txt");
+                Console.WriteLine(logErrors);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+
             Console.WriteLine();
 
             HTTPErrorsCollection fromFile = new HTTPErrorsCollection();
-            MyTextPair text = fromFile.ReadTextFromFile("File2.txt");
-            Console.WriteLine($"Text from file:\n{text.OldText}\nChanged text:\n{text.NewText}");
+            try
+            {
+                MyTextPair text = fromFile.ReadTextFromFile("File2.txt");
+                Console.WriteLine($"Text from file:\n{text.OldText}\nChanged text:\n{text.NewText}");
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
 
             Logger.AddLog(400, DateTime.Now);
             Logger.AddLog(400, DateTime.Now);
