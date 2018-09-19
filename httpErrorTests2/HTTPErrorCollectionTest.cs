@@ -42,5 +42,21 @@ namespace HttpError.Tests
             }
             Assert.Fail("No exception was thrown.");
         }
+        [TestMethod()]
+        public void HttpErrorsGetter()
+        {
+           var one = new HTTPError(402,DateTime.Now);
+           var two = new HTTPError(403,DateTime.Now);
+           var three = new HTTPError(404,DateTime.Now);
+            
+           var collection = new HTTPErrorsCollection();
+           collection.Add(one);
+           collection.Add(two);
+           collection.Add(three);
+            
+           Assert.IsTrue(collection.HttpErrors.Count>0);
+           Assert.IsTrue(collection[0].Code==402);
+           
+        }
     }
 }
