@@ -12,9 +12,23 @@ namespace HttpError.Tests
     public class HTTPErrorTests
     {
         [TestMethod()]
-        public void HTTPErrorTest()
+        public void HTTPErrorTestCode()
         {
-            Assert.Fail();
+            var d = DateTime.Now;
+            HTTPError kek = new HTTPError(404, d);
+
+            Assert.AreEqual(404, kek.Code);
         }
+        [TestMethod()]
+        public void HTTPErrorTestDate()
+        {
+            var d = DateTime.Now;
+            HTTPError kek = new HTTPError(404, d);
+
+            Assert.AreEqual(d, kek.Date);
+        }
+
+        //[TestMethod()]
+        //public void HTTPErrorTest
     }
 }
