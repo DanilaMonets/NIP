@@ -47,5 +47,23 @@ namespace HttpError.Tests
             Assert.AreEqual(HTTPError.GetDescriptionOf(402), "Payment Required");
             Assert.AreEqual(HTTPError.GetDescriptionOf(404), "Not Found");
         }
+
+        [TestMethod()]
+        public void HTTPErrorEqualsTest()
+        {
+            var d = DateTime.Now;
+            HTTPError kek = new HTTPError(401, d);
+            HTTPError lol = new HTTPError(401, d);
+
+            HTTPError yo = new HTTPError(403, d);
+            HTTPError ye = new HTTPError(403, d);
+
+            HTTPError kekez = new HTTPError(404, d);
+            HTTPError lolez = new HTTPError(404, d);
+            if (kek.Equals(lol) && yo.Equals(ye) && kekez.Equals(lolez))
+            {
+                return;
+            }
+        }
     }
 }
