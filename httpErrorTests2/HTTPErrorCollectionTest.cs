@@ -55,6 +55,7 @@ namespace HttpError.Tests
            collection.Add(three);
             
            Assert.IsTrue(collection.HttpErrors.Count>0);
+           Assert.IsTrue(collection[0].Code==402);
            
         }
     }
