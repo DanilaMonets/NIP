@@ -65,5 +65,26 @@ namespace HttpError.Tests
                 return;
             }
         }
+
+        [TestMethod()]
+        public void HTTPErrorCompareToTest()
+        {
+            var d = DateTime.Now;
+            HTTPError kek = new HTTPError(401, d);
+            try
+            {
+                kek.CompareTo(12);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual(e.Message, "об`єкт не є HTTPEror!");
+            }
+            HTTPError lol = new HTTPError(401, d);
+            HTTPError lolez = new HTTPError(403, d);
+            if (kek.CompareTo(lol) == 0 && kek.CompareTo(lolez) == 1)
+            {
+                return;
+            }
+        }
     }
 }
