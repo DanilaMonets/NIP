@@ -12,7 +12,7 @@ namespace HttpError.Tests
     public class HTTPErrorTests
     {
         [TestMethod()]
-        public void HTTPErrorTestCode()
+        public void HTTPErrorCodeTest()
         {
             var d = DateTime.Now;
             HTTPError kek = new HTTPError(404, d);
@@ -20,7 +20,7 @@ namespace HttpError.Tests
             Assert.AreEqual(404, kek.Code);
         }
         [TestMethod()]
-        public void HTTPErrorTestDate()
+        public void HTTPErrorDateTest()
         {
             var d = DateTime.Now;
             HTTPError kek = new HTTPError(404, d);
@@ -28,7 +28,14 @@ namespace HttpError.Tests
             Assert.AreEqual(d, kek.Date);
         }
 
-        //[TestMethod()]
-        //public void HTTPErrorTest
+        [TestMethod()]
+        public void HTTPErrorDescriptionTest()
+        {
+            HTTPError kek = new HTTPError();
+            Assert.AreEqual(kek.Description, "ERROR");
+
+            HTTPError lol = new HTTPError(404, DateTime.Now);
+            Assert.AreEqual(lol.Description, "Not Found");
+        }
     }
 }
