@@ -37,5 +37,15 @@ namespace HttpError.Tests
             HTTPError lol = new HTTPError(404, DateTime.Now);
             Assert.AreEqual(lol.Description, "Not Found");
         }
+
+        [TestMethod()]
+        public void HTTPErrorGetDescriptionOfTest()
+        {
+            Assert.AreEqual(HTTPError.GetDescriptionOf(400), "Bad Request");
+            Assert.AreEqual(HTTPError.GetDescriptionOf(401), "Unauthorized");
+            Assert.AreEqual(HTTPError.GetDescriptionOf(403), "Forbidden");
+            Assert.AreEqual(HTTPError.GetDescriptionOf(402), "Payment Required");
+            Assert.AreEqual(HTTPError.GetDescriptionOf(404), "Not Found");
+        }
     }
 }
