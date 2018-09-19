@@ -38,6 +38,7 @@ namespace HttpError.Tests
             catch (FileNotFoundException e)
             {
                 Assert.AreEqual(e.Message, "There is no such file.");
+                return;
             }
             Assert.Fail("No exception was thrown.");
         }
