@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HttpError.Tests
+namespace HttpErrorTest1
 {
-    [TestClass()]
+    [TestClass]
     public class HTTPErrorTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void HTTPErrorTest()
         {
             var kek = DateTime.Now;
@@ -20,6 +20,7 @@ namespace HttpError.Tests
             Assert.AreEqual(kek, hTTPError.Date);
             Assert.AreEqual(404, hTTPError.Code);
         }
+
     }
 
 }
