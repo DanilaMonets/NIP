@@ -27,5 +27,19 @@ namespace HttpError.Tests
             }
             Assert.Fail("No exception was thrown.");
         }
+        [TestMethod()]
+        public void ReadLogOfErrorsFromFileTest()
+        {
+            HTTPErrorsCollection httpErrorsCollection = new HTTPErrorsCollection();
+            try
+            {
+                httpErrorsCollection.ReadLogOfErrorsFromFile("File54.txt");
+            }
+            catch (FileNotFoundException e)
+            {
+                Assert.AreEqual(e.Message, "There is no such file.");
+            }
+            Assert.Fail("No exception was thrown.");
+        }
     }
 }
