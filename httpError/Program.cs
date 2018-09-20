@@ -27,7 +27,7 @@ namespace HttpError
             HTTPErrorsCollection logErrors = new HTTPErrorsCollection();
             try
             {
-                logErrors.ReadLogOfErrorsFromFile("File1.txt");
+                logErrors.ReadLogOfErrorsFromFile("../../File1.txt");
                 Console.WriteLine(logErrors);
             }
             catch (FileNotFoundException ex)
@@ -66,6 +66,8 @@ namespace HttpError
                     Console.WriteLine($"\t{date}");
                 });
             }
+
+            Console.ReadKey();
         }
     }
 }

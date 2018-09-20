@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>httpError</name>
+    </assembly>
+    <members>
+        <member name="T:HttpError.HTTPError">
+            <summary>
+            Represents class for HTTP error
+            </summary>
+        </member>
+        <member name="M:HttpError.HTTPError.#cctor">
+            <summary>
+            Static constructor for initialization static list of errors
+            </summary>
+        </member>
+        <member name="M:HttpError.HTTPError.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HttpError.HTTPError"/> class
+            </summary>
+        </member>
+        <member name="M:HttpError.HTTPError.#ctor(System.Int32,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HttpError.HTTPError"/> class with specified code and date
+            </summary>
+            <param name="code"></param>
+            <param name="date"></param>
+        </member>
+        <member name="P:HttpError.HTTPError.Code">
+            <summary>
+            Gets variable code
+            </summary>
+            <value>The code</value>
+        </member>
+        <member name="P:HttpError.HTTPError.Description">
+            <summary>
+            Gets variable description
+            </summary>
+            <value>The description</value>
+        </member>
+        <member name="P:HttpError.HTTPError.Date">
+            <summary>
+            Gets and sets variable date
+            </summary>
+        </member>
+        <member name="M:HttpError.HTTPError.GetDescriptionOf(System.Int32)">
+            <summary>
+            Gets description of error by its code
+            </summary>
+            <param name="key">Key (Error's code)</param>
+            <returns>String of description of error</returns>
+        </member>
+        <member name="M:HttpError.HTTPError.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:HttpError.HTTPError"/>.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:HttpError.HTTPError"/>.</param>
+            <returns><c>true</c> if the specified <see cref="T:System.Object"/> is equal to the current
+            <see cref="T:HttpError.HTTPError"/>; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:HttpError.HTTPError.CompareTo(System.Object)">
+            <summary>
+            Compares instance to <see cref="T:System.Object"/>
+            </summary>
+            <param name="obj"></param>
+            <returns>1 0 -1</returns>
+        </member>
+        <member name="M:HttpError.HTTPError.ToString">
+            <summary>
+            Returns a string that represents the current instance
+            </summary>
+            <returns>A <see cref="T:System.String"/></returns>
+        </member>
+        <member name="M:HttpError.HTTPError.GetHashCode">
+            <summary>
+            Serves as a hash function for a <see cref="T:HttpError.HTTPError"/> object 
+            </summary>
+            <returns>A hash code for this instance that is suitable for use in hashing algorithms and data structures such as a hash table</returns>
+        </member>
+        <member name="T:HttpError.HTTPErrorsCollection">
+            <summary>
+            Represents classs for HTTPError collection
+            </summary>
+        </member>
+        <member name="F:HttpError.HTTPErrorsCollection.httpErrors">
+            <summary>
+            List of HTTP errors
+            </summary>
+        </member>
+        <member name="M:HttpError.HTTPErrorsCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HttpError.HTTPErrorsCollection"/> class
+            </summary>
+        </member>
+        <member name="P:HttpError.HTTPErrorsCollection.HttpErrors">
+            <summary>
+            Gets variable httpErrors
+            </summary>
+        </member>
+        <member name="P:HttpError.HTTPErrorsCollection.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:httpError.HTTPErrorsCollection"/> at the specified index.
+            </summary>
+            <param name="index">Index of error you want to get</param>
+            <returns>Error by your index</returns>
+        </member>
+        <member name="M:HttpError.HTTPErrorsCollection.Add(HttpError.HTTPError)">
+            <summary>
+            Adds new HTTP error to the list 
+            </summary>
+            <param name="error">Error you want to add</param>
+        </member>
+        <member name="M:HttpError.HTTPErrorsCollection.Remove(HttpError.HTTPError)">
+            <summary>
+            Removes  specified HTTP error from the list
+            </summary>
+            <param name="error">Error you want to remove</param>
+            <returns>Error that was removed</returns>
+        </member>
+        <member name="M:HttpError.HTTPErrorsCollection.Contains(HttpError.HTTPError)">
+            <summary>
+            Checks if list contains specified HTTP error
+            </summary>
+            <param name="error">An error whose presence will be checked</param>
+            <returns> <see langword="true"/> if the error is on the list, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:HttpError.HTTPErrorsCollection.RemoveAt(System.Int32)">
+            <summary>
+            Removes specified HTTP error chosen by index
+            </summary>
+            <param name="index">Index of error you want do remove</param>
+        </member>
+        <member name="M:HttpError.HTTPErrorsCollection.Clear">
+            <summary>
+            Clears list of HTTP errors
+            </summary>
+        </member>
+        <member name="M:HttpError.HTTPErrorsCollection.ToString">
+            <summary>
+            Represents instance in string format
+            </summary>
+            <returns>String representation</returns>
+        </member>
+        <member name="M:HttpError.HTTPErrorsCollection.ReadLogOfErrorsFromFile(System.String)">
+            <summary>
+            Reads list of HTTP errors from file
+            </summary>
+            <param name="path">Path to file with list of errors</param>
+            <exception cref="T:System.IO.IOException">Throw when an incorrect file path is specified</exception>
+        </member>
+        <member name="M:HttpError.HTTPErrorsCollection.ReadTextFromFile(System.String)">
+            <summary>
+            Reads text from file
+            </summary>
+            <param name="path">Path to file with text which contains code of errors</param>
+            <returns>Pair of text from file and changed text</returns>
+            <exception cref="T:System.IO.IOException">Throw when an incorrect file path is specified</exception>
+        </member>
+        <member name="T:HttpError.HttpRequestEmulator">
+            <summary>
+            Class emulating Http Request 
+            </summary>
+        </member>
+        <member name="M:HttpError.HttpRequestEmulator.MakeRequest">
+            <summary>
+            Make a fake request and get a random Http Error
+            </summary>
+        </member>
+        <member name="T:HttpError.Logger">
+            <summary>
+            Represents static class Logger
+            </summary>
+        </member>
+        <member name="F:HttpError.Logger.PATH">
+            <summary>
+            The const path to log file.
+            </summary>
+        </member>
+        <member name="F:HttpError.Logger.log">
+            <summary>
+            Static list of error's code and list of dates
+            </summary>
+        </member>
+        <member name="M:HttpError.Logger.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:HttpError.Logger"/> class
+            </summary>
+        </member>
+        <member name="P:HttpError.Logger.Log">
+            <summary>
+            Gets variable log
+            </summary>
+        </member>
+        <member name="P:HttpError.Logger.GetLog">
+            <summary>
+            Gets the log.
+            </summary>
+            <value>The log.</value>
+        </member>
+        <member name="M:HttpError.Logger.AddLog(System.Int32,System.DateTime)">
+            <summary>
+            Adds pair of key and time to log
+            </summary>
+            <param name="key">Error to add</param>
+            <param name="time">The time when the error occurred</param>
+        </member>
+        <member name="M:HttpError.Logger.MakeALog(System.String)">
+            <summary>
+            Loads log in file
+            </summary>
+            <param name="filename">Path to file</param>
+        </member>
+        <member name="T:HttpError.MainClass">
+            <summary>
+            Main class.
+            </summary>
+        </member>
+        <member name="M:HttpError.MainClass.Main(System.String[])">
+            <summary>
+            The entry point of the program, where the program control starts and ends.
+            </summary>
+            <param name="args">The command-line arguments.</param>
+        </member>
+        <member name="T:HttpError.MyTextPair">
+            <summary>
+            Represent a pair of two string values.
+            </summary>
+        </member>
+        <member name="F:HttpError.MyTextPair.oldText">
+            <summary>
+            The old text.
+            </summary>
+        </member>
+        <member name="F:HttpError.MyTextPair.newText">
+            <summary>
+            The new text.
+            </summary>
+        </member>
+        <member name="M:HttpError.MyTextPair.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HttpError.MyTextPair"/> struct.
+            </summary>
+            <param name="oldText">Old text.</param>
+            <param name="newText">New text.</param>
+        </member>
+        <member name="P:HttpError.MyTextPair.OldText">
+            <summary>
+            Gets the old text.
+            </summary>
+            <value>The old text.</value>
+        </member>
+        <member name="P:HttpError.MyTextPair.NewText">
+            <summary>
+            Gets the new text.
+            </summary>
+            <value>The new text.</value>
+        </member>
+    </members>
+</doc>
